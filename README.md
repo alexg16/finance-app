@@ -1,136 +1,98 @@
-# Finance Tool Web Application
+# Personal Finance Tracker
 
-## Overview
-The Finance Tool is a web application designed to help users manage their personal finances. The tool allows users to add, edit, and delete transactions, set monthly budgets, and view their transaction history. It provides a dashboard summarizing income, expenses, and remaining budget, offering users an insightful look into their financial status. The project leverages Django for the back-end, and it integrates JavaScript on the front-end for client-side validation. The application is mobile-responsive, ensuring usability across devices.
+A web application for managing personal finances, tracking income and expenses, and visualizing spending trends. Built as the capstone project for Harvard's **CS50W: Web Programming with Python and JavaScript**, this app demonstrates advanced use of Django, JavaScript, and responsive web design principles.
 
-## Distinctiveness and Complexity
+---
 
-### Distinctiveness
-This project is distinct from other CS50W projects in several key aspects:
+## Features
+- **Dashboard**: View income, expenses, budgets, and dynamic charts for spending trends.
+- **Transactions Management**: Add, edit, delete, and filter transactions by type, category, and date range.
+- **Budget Tracking**: Set monthly budgets and monitor progress.
+- **Dynamic Charts**: Visualize data using Chart.js for:
+  - Expenses by category (pie chart).
+  - Monthly spending trends (bar chart).
+- **Mobile Responsiveness**: Fully responsive design using Bootstrap.
 
-- **Purpose and Functionality**: Unlike Project 2 (E-commerce) or Project 4 (Social Network), this project is focused on personal financial management, allowing users to track income, expenses, and set budgets. It does not involve user-to-user interactions or a marketplace.
-- **Data Aggregation**: The dashboard aggregates and displays financial data, including income and expenses by category, and calculates the budget remaining, which adds significant functionality compared to standard CRUD operations in other projects.
-- **Dynamic Filtering**: The transaction history includes dynamic filtering options, such as filtering by type, category, and date range, which goes beyond simple data display.
+---
 
-### Complexity
-This project satisfies the complexity requirement through:
+## Technologies Used
+- **Backend**: Django (Python)
+- **Frontend**: HTML, CSS (Bootstrap), JavaScript
+- **Visualization**: Chart.js
+- **Database**: SQLite (default Django DB)
 
-- **Multiple Models**: The project utilizes three distinct models: Category, Transaction, and Budget, each with different relationships and constraints.
-- **User Authentication**: The project implements user authentication with custom views for login, logout, and registration.
-- **CRUD Operations**: Full CRUD (Create, Read, Update, Delete) operations are implemented for transactions, complete with form validation and user-specific data handling.
-- **JavaScript Validation**: Custom JavaScript is used for client-side form validation, enhancing user experience by preventing invalid submissions.
-- **Data Visualization**: The dashboard aggregates and displays monthly income and expenses, and calculates remaining budget dynamically based on user data.
+---
 
-## Project Structure
-The project structure is as follows:
-```
-finance_tool/
-|-- budget/
-|   |-- templates/
-|   |   |-- budget/
-|   |   |   |-- add_transaction.html
-|   |   |   |-- dashboard.html
-|   |   |   |-- delete_transaction.html
-|   |   |   |-- edit_transaction.html
-|   |   |   |-- layout.html
-|   |   |   |-- login.html
-|   |   |   |-- register.html
-|   |   |   |-- set_budget.html
-|   |   |   |-- transaction_history.html
-|   |-- admin.py
-|   |-- apps.py
-|   |-- forms.py
-|   |-- models.py
-|   |-- tests.py
-|   |-- urls.py
-|   |-- views.py
-|-- finance_tool/
-|   |-- __init__.py
-|   |-- asgi.py
-|   |-- settings.py
-|   |-- urls.py
-|   |-- wsgi.py
-|-- db.sqlite3
-|-- manage.py
-```
+## Setup and Installation
 
-## File Descriptions
+### Prerequisites
+- Python 3.x installed on your system.
+- A virtual environment tool (e.g., `venv`).
 
-### models.py
-Defines three models:
+### Steps to Run the Application
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/andrewkgithub/finance-app.git
+   cd repository-name
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # For Windows: venv\Scripts\activate
+   ```
+3. Install required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Apply database migrations:
+   ```bash
+   python manage.py migrate
+   ```
+5. Create a superuser (admin account):
+   ```bash
+   python manage.py createsuperuser
+   ```
+6. Start the development server:
+   ```bash
+   python manage.py runserver
+   ```
+7. Open your browser and visit: http://127.0.0.1:8000/
 
-- **Category**: Represents a category of transactions (e.g., "Groceries").
-- **Transaction**: Represents an individual transaction with fields for amount, date, type (income/expense), category, and description.
-- **Budget**: Represents a user’s budget for a specific month and year, ensuring each user has a unique budget for each period.
+---
 
-### views.py
-Contains the logic for handling HTTP requests and rendering templates:
+## Project Structure 
+Here’s an overview of the main files and directories:
+   ```bash
+       personal-finance-tracker/
+    ├── budget/
+    │   ├── migrations/           # Database migrations
+    │   ├── static/               # Static assets (CSS, JS, images)
+    │   ├── templates/            # HTML templates
+    │   ├── admin.py              # Admin panel configuration
+    │   ├── apps.py               # Django app configuration
+    │   ├── forms.py              # Forms for transaction and budget management
+    │   ├── models.py             # Database models
+    │   ├── views.py              # Application logic
+    │   ├── urls.py               # URL routing
+    ├── db.sqlite3                # SQLite database
+    ├── manage.py                 # Django management tool
+    ├── README.md                 # Project documentation
+    ├── requirements.txt          # Python dependencies
 
-- **dashboard**: Displays the user's total income, expenses, and remaining budget.
-- **add_transaction**: Handles adding new transactions.
-- **transaction_history**: Lists all user transactions with filtering options.
-- **edit_transaction**: Allows users to edit existing transactions.
-- **delete_transaction**: Handles transaction deletion with a confirmation prompt.
-- **set_budget**: Allows users to set their monthly budget.
-- **login_view, logout_view, register**: Manage user authentication.
+   ```
 
-### forms.py
-Defines forms used for user input:
+---
 
-- **TransactionForm**: Handles input for transactions.
-- **BudgetForm**: Handles input for setting budgets.
-
-### templates/budget/
-
-- **layout.html**: Base template for consistent structure across all pages.
-- **dashboard.html**: Displays financial summaries (income, expenses, budget remaining).
-- **add_transaction.html**: Form for adding new transactions.
-- **transaction_history.html**: Lists and filters transactions.
-- **edit_transaction.html**: Form for editing transactions.
-- **delete_transaction.html**: Confirmation page for deleting transactions.
-- **login.html**: User login form.
-- **register.html**: User registration form.
-- **set_budget.html**: Form for setting monthly budgets.
-
-### admin.py
-Registers models in the Django admin interface for data management.
-
-## How to Run the Application
-
-### 1. Clone the Repository:
-```bash
-git clone https://github.com/USERNAME/finance_tool.git
-cd finance_tool
-```
-### 2. Install Dependencies:
-Ensure all required packages are installed by running:
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Apply Migrations:
-```bash
-python manage.py migrate
-```
-
-### 4. Create a Superuser:
-```bash
-python manage.py createsuperuser
-```
-
-### 5. Run the Development Server:
-```bash
-python manage.py runserver
-```
-
-### 6. Access the Application:
-Visit http://127.0.0.1:8000 in your web browser.
-
-##  Additional Information
-- **Dependencies**: Ensure all Python packages in `requirements.txt` are installed.
-- **Mobile-Responsiveness**: The application uses Bootstrap for responsive design.
-- **Security Considerations**: User authentication is secured using Django's built-in tools.
-
-## Distinctiveness and Complexity Recap
-
-This project is unique due to its focus on financial management, extensive use of models and forms, user-specific data handling, CRUD operations, and JavaScript for form validation. It integrates complex data aggregation logic for financial summaries and provides users with an intuitive interface for budget tracking and transaction management.
+## Features in Detail
+1. **Dashboard**:
+  - Displays income, expenses, remaining budget, and visualizations.
+  - Dynamic charts update based on transactions for the current month.
+2. **Transaction Management**:
+  - Add transactions with fields like amount, category, type (income/expense), and description.
+  - Edit or delete existing transactions.
+  - Filter transactions by type, category, and date.
+3. **Budget Tracking**:
+  - Set monthly budgets and monitor remaining amounts.
+4. **Data Visualization**:
+  - Pie Chart: Breaks down expenses by category.
+  - Bar Chart: Shows monthly spending trends.

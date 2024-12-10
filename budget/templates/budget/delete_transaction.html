@@ -1,0 +1,30 @@
+{% extends 'budget/layout.html' %}
+
+{% block title %}Delete Transaction{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title text-danger">Delete Transaction</h2>
+        <p>Are you sure you want to delete this transaction?</p>
+        <ul class="list-group mb-3">
+            <li class="list-group-item">Date: {{ transaction.date }}</li>
+            <li class="list-group-item">Type: {{ transaction.get_type_display }}</li>
+            <li class="list-group-item">Category: 
+                {% if transaction.category %}
+                    {{ transaction.category.name }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </li>
+            <li class="list-group-item">Amount: ${{ transaction.amount }}</li>
+            <li class="list-group-item">Description: {{ transaction.description }}</li>
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="{% url 'transaction_history' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

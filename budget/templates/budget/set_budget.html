@@ -1,0 +1,16 @@
+{% extends "budget/layout.html" %}
+
+{% block title %}Set Monthly Budget{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Set Monthly Budget</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary mt-3">Save Budget</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

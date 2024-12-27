@@ -1,6 +1,6 @@
 # Personal Finance Tracker
 
-A web application for managing personal finances, tracking income and expenses, and visualizing spending trends. Built as the capstone project for Harvard's **CS50W: Web Programming with Python and JavaScript**, this app demonstrates advanced use of Django, JavaScript, and responsive web design principles.
+A web application for managing personal finances, tracking income and expenses, and visualizing spending trends. Built as the capstone project for Harvard's **CS50w: Web Programming with Python and JavaScript**, this app demonstrates advanced use of Django, JavaScript, and responsive web design principles.
 
 ---
 

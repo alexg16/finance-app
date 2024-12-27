@@ -32,7 +32,7 @@ A web application for managing personal finances, tracking income and expenses, 
 ### Steps to Run the Application
 1. Clone the repository:
    ```bash
-   git clone https://github.com/andrewkgithub/finance-app.git
+   git clone https://github.com/andrewkdev/finance-app.git
    cd repository-name
    ```
 2. Create and activate a virtual environment:
